@@ -10,8 +10,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 </head>
@@ -64,7 +64,7 @@
                 desabilitarFormulario();
                 document.getElementById("registerBtn").style.display = "none";
                 document.getElementById("updateBtn").style.display = "none";
-            }else{
+            } else {
                 habilitarFormulario();
                 document.getElementById("updateBtn").style.display = "block";
                 document.getElementById("registerBtn").style.display = "none";
@@ -113,10 +113,22 @@
                 return;
             }
 
-            form.push({name: 'address', value: document.getElementById("address").value});
-            form.push({name: 'city',value: document.getElementById("city").value });
-            form.push({name: 'state',value: document.getElementById("state").value});
-            form.push({name: 'district',value: document.getElementById("district").value});
+            form.push({
+                name: 'address',
+                value: document.getElementById("address").value
+            });
+            form.push({
+                name: 'city',
+                value: document.getElementById("city").value
+            });
+            form.push({
+                name: 'state',
+                value: document.getElementById("state").value
+            });
+            form.push({
+                name: 'district',
+                value: document.getElementById("district").value
+            });
 
             if (id) {
                 $.ajax({
@@ -233,6 +245,8 @@
             }
         }
     </script>
+
+
 
 </body>
 

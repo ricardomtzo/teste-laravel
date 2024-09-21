@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
+
+Route::get('/dashboard', [UserController::class, 'calculeUserByState']);
+
