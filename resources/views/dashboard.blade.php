@@ -2,6 +2,7 @@
     @section('content')
     <div class="py-12">
 
+        <h4>Gerenciamento de usuários</h4>
         <div class="row">
             <div class="col-md-6">
                 <div id="chart_div"></div>
@@ -18,6 +19,7 @@
         <input type="hidden" id="usersByYear" value="{{ json_encode($valuesChart['usersByYear']) }}">
         <input type="hidden" id="activeUsers" value="{{ json_encode($valuesChart['activeUsers']) }}">
         <input type="hidden" id="inactiveUsers" value="{{ json_encode($valuesChart['inactiveUsers']) }}">
+
     </div>
 
     @endsection
@@ -50,7 +52,7 @@
         // Set chart options
         var options = {
             'title': 'Usuários por estado',
-            
+
         };
 
         // Instantiate and draw our chart, passing in some options.
@@ -78,7 +80,7 @@
 
         var options = {
             title: 'Usuarios por ano de cadastro',
-            
+
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById('totalUsers_chart_div'));

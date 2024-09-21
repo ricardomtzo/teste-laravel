@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use function Psy\debug;
@@ -100,7 +101,8 @@ class UserController extends Controller
     }
 
     public function calculeUserByState()
-    {
+    {   
+        $user = Auth::user();
 
         $usersByYear = User::selectRaw('YEAR(created_at) as year, COUNT(*) as total')
             ->groupBy('year')
@@ -132,7 +134,8 @@ class UserController extends Controller
             'pizza' => $percentages,
             'usersByYear' => $usersByYear,
             'activeUsers' => $activeUsers,
-            'inactiveUsers' => $inactiveUsers
+            'inactiveUsers' => $inactiveUsers,
+            'user' => $user
         ];
 
         return view('dashboard', compact('valuesChart'));
