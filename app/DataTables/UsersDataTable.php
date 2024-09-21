@@ -94,8 +94,8 @@ class UsersDataTable extends DataTable
                 ->exportable(true)
                 ->printable(true),
             Column::computed('action')
-                ->exportable(true)
-                ->printable(true)
+                ->exportable(false)
+                ->printable(false)
                 ->width(120)
                 ->addClass('text-center'),
             //Column::make('created_at'),
