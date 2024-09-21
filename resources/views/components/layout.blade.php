@@ -35,6 +35,7 @@
         // Abre o modal quando o botão é clicado
         btn.onclick = function() {
             $('#myForm')[0].reset();
+            document.getElementById("id").value = "";
             document.getElementById("address").disabled = false;
             document.getElementById("city").disabled = false;
             document.getElementById("state").disabled = false;
@@ -101,7 +102,10 @@
             e.preventDefault();
 
             var id = document.getElementById("id").value;
-            const form = $('#myForm').serializeArray();
+            var form = $('#myForm').serializeArray();
+
+            form = form.filter(i => i.name !== 'id');
+
             const cpf = form.find(i => i.name === 'cpf').value;
 
             if (!validarCPF(cpf)) {
@@ -109,7 +113,10 @@
                 return;
             }
 
-            console.log(form);
+            form.push({name: 'address', value: document.getElementById("address").value});
+            form.push({name: 'city',value: document.getElementById("city").value });
+            form.push({name: 'state',value: document.getElementById("state").value});
+            form.push({name: 'district',value: document.getElementById("district").value});
 
             if (id) {
                 $.ajax({
@@ -126,7 +133,7 @@
                 $.ajax({
                     url: 'api/users/',
                     method: 'POST',
-                    data: $('#myForm').serializeArray(),
+                    data: form,
                     success: function(userData) {
                         modal.style.display = "none";
                         $('#usersTable').DataTable().ajax.reload()
