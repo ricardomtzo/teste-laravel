@@ -1,6 +1,6 @@
 <x-layout>
     @section('content')
-    <div class="py-12">
+    <div class="py-12 mt-5">
 
         <h4>Gerenciamento de usuários</h4>
         <div class="row">

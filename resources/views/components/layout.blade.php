@@ -11,17 +11,34 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 </head>
 
 <body>
 
-    <x-sidebar />
-
-    <div class="container">
-        @yield('content')
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills pb-3 p-3 bg-dark text-white border-bottom" data-bs-theme="dark" id="pills-tab" role="tablist">
+                <li class="nav-item p-2">
+                    Sistema de Gerenciamento
+                </li>
+                <li class="nav-item last float-right" style="width: 80%">
+                    <a class="btn btn-outline-secondary" style="float: right;color:#fff" id="pills-profile-tab" data-toggle="pill" href="/login" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="bi bi-box-arrow-left"></i> Sair</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <x-sidebar />
+        </div>
+        <div class="col-md-10">
+            <div class="container">
+                @yield('content')
+            </div>
+        </div>
     </div>
 
     @stack('scripts')
@@ -113,10 +130,22 @@
                 return;
             }
 
-            form.push({ name: 'address',value: document.getElementById("address").value });
-            form.push({ name: 'city',value: document.getElementById("city").value });
-            form.push({ name: 'state', value: document.getElementById("state").value });
-            form.push({ name: 'district',value: document.getElementById("district").value });
+            form.push({
+                name: 'address',
+                value: document.getElementById("address").value
+            });
+            form.push({
+                name: 'city',
+                value: document.getElementById("city").value
+            });
+            form.push({
+                name: 'state',
+                value: document.getElementById("state").value
+            });
+            form.push({
+                name: 'district',
+                value: document.getElementById("district").value
+            });
 
             if (id) {
                 $.ajax({

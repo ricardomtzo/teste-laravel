@@ -1,7 +1,7 @@
 <x-layout>
 
     @section('content')
-    <div class="container">
+    <div class="container pt-5">
 
         <div id="myModal" class="modal">
             <div class="modal-content">
