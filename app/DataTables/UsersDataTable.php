@@ -43,6 +43,18 @@ class UsersDataTable extends DataTable
                     return $query->active == 1 ? 'Ativo' : 'Inativo';
                 }
             )
+            ->addColumn(
+                'Nome',
+                function ($query) {
+                    return $query->name;
+                }
+            )
+            ->addColumn(
+                'Telefone',
+                function ($query) {
+                    return $query->phone;
+                }
+            )
             ->setRowId('id');
     }
 
@@ -83,9 +95,9 @@ class UsersDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
+            Column::make('Nome'),
             Column::make('email'),
-            Column::make('phone'),
+            Column::make('Telefone'),
             Column::make('cpf'),
             Column::make('Idade')
                 ->exportable(true)
@@ -93,7 +105,7 @@ class UsersDataTable extends DataTable
             Column::make('Status')
                 ->exportable(true)
                 ->printable(true),
-            Column::computed('action')
+            Column::computed('action', 'Ações')
                 ->exportable(false)
                 ->printable(false)
                 ->width(120)
